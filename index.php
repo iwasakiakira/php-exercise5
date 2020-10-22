@@ -4,9 +4,9 @@
 // 以下にCarクラスを定義して、当プログラムを実行した時にエラーがでないようにして下さい。
 class Car
 {
-    public $carName = 'ランクル';
-    public $color = 'black';
-    public $carNum = 100;
+    protected $carName = 'ランクル';
+    protected $color = 'black';
+    protected $carNum = 100;
 
     public function __construct($carName, $carNum, $color)
     {
@@ -28,11 +28,6 @@ class Car
         return $this->color;
     }
 
-    public function infomation()
-    {
-        return '車の車種 : ' . $this->carName . ', 車体番号 : ' . $this->carNum . ', カラー : ' . $this->color . 'です｡';
-    }
-
     public function setName($carName)
     {
         return $this->carName = $carName;
@@ -47,6 +42,12 @@ class Car
     {
         return $this->color = $color;
     }
+
+    public function infomation()
+    {
+        return '車の車種 : ' . $this->carName . ', 車体番号 : ' . $this->carNum . ', カラー : ' . $this->color . 'です｡';
+    }
+
 }
 
 class Taxi extends Car
@@ -59,23 +60,19 @@ class Taxi extends Car
         return '車の車種 : ' . $this->carName . ', 車体番号 : ' . $this->carNum . ', カラー : ' . $this->color . ', 乗車人数は ' . $this->passenger . '人です｡';
     }
 
-    public function pickup($pickup)
+    public function pickUp($pickUp)
     {
-        $this->passenger = $this->passenger + $pickup;
-        return $this->pickup = $pickup;
+        $this->passenger = $this->passenger + $pickUp;
     }
 
     public function lower($lower)
     {
-        $this->passenger = $this->passenger - $lower;
-
-        if ($this->passenger >= 0) {
+        if ($this->passenger - $lower > 0) {
+            $this->passenger = $this->passenger - $lower;
             echo $lower . '人降車しました｡';
-        } elseif ($this->passenger - $lower < 0) {
+        } else {
             echo '降車人数に誤りがあります｡';
         }
-
-        return $this->lower = $lower;
     }
 }
 
