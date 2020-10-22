@@ -52,12 +52,12 @@ class Car
 
 class Taxi extends Car
 {
-    public $passenger;
+    private $passenger;
 
 
     public function infomation()
     {
-        return '車の車種 : ' . $this->carName . ', 車体番号 : ' . $this->carNum . ', カラー : ' . $this->color . ', 乗車人数は ' . $this->passenger . '人です｡';
+        echo '車の車種 : ' . $this->carName . ', 車体番号 : ' . $this->carNum . ', カラー : ' . $this->color . ', 乗車人数は ' . $this->passenger . '人です｡';
     }
 
     public function pickUp($pickUp)
